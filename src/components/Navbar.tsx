@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowLeft } from "lucide-react";
 import styles from "./Navbar.module.css";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,9 +32,8 @@ const Navbar = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.container}`}>
-        <Link href="/" className={styles.logo}>
-          <span>آرتي</span>
-          <span className={styles.services}>للبرمجيات</span>
+        <Link href="/" className={styles.logoLink}>
+          <Logo size="md" />
         </Link>
 
         <div className={styles.desktopLinks}>

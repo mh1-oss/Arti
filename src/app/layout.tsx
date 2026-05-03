@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     description: "حلول برمجية ذكية للأعمال الحديثة",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body style={{ paddingTop: 'var(--nav-height)' }}>
         <Navbar />
         <main>{children}</main>

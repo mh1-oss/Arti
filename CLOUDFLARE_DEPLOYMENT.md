@@ -30,10 +30,26 @@ This project is optimized for **Cloudflare Pages** using Next.js Static Site Gen
 6.  **Deploy**:
     Click **Save and Deploy**. Cloudflare will now build your site and host it on their global edge network.
 
-## Why this setup works
-- **Static Export**: By using `output: 'export'` in `next.config.ts`, the site is converted to pure HTML/CSS/JS, which is perfectly suited for CDN delivery.
-- **No Node.js Runtime**: This avoids the need for a dedicated server, making it extremely fast and cost-efficient.
-- **Edge Compatibility**: All assets are served from the nearest Cloudflare data center to your users.
+## Troubleshooting: OpenNext / Standalone Error
+If you see an error like `Error: ENOENT: no such file or directory, open '.next/standalone/...'`, it means Cloudflare is trying to deploy your site as a **Full-stack Application** using OpenNext instead of a **Static Site**.
+
+### To fix this:
+1.  **In Cloudflare Dashboard**:
+    - Go to **Workers & Pages** > **[Your Project]** > **Settings** > **Builds & deployments**.
+    - Ensure **Build command** is set to `npm run build`.
+    - Ensure **Build output directory** is set to `out` (Next.js 14+ static output folder).
+2.  **Compatibility Date**:
+    - Ensure the compatibility date is recent (e.g., `2024-01-01`).
+3.  **Root Directory**:
+    - Set it to `/`.
+
+### Why avoid OpenNext for this project?
+This project is configured for `output: 'export'` in `next.config.ts`. This generates a pure static site in the `out/` folder, which is:
+- **Faster**: Served directly from the CDN without executing Worker code.
+- **Cheaper**: No Worker execution limits or costs.
+- **Simpler**: No need for complex standalone configurations.
+
+If you *really* need server-side features (like Next.js API routes), you would need to change `output: 'export'` to `output: 'standalone'` in `next.config.ts`, but for a corporate branding site, static is highly recommended.
 
 ## Local Verification
 Before deploying, you can verify the build locally:

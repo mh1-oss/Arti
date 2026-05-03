@@ -4,15 +4,16 @@ import React from "react";
 import Link from "next/link";
 import { Globe, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import styles from "./Footer.module.css";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.brand}>
-          <div className={styles.logo}>
-            <span>آرتي</span>
-          </div>
+          <Link href="/" className={styles.logoLink}>
+            <Logo size="lg" />
+          </Link>
           <p className={styles.description}>
             نحن نبني حلولاً برمجية ذكية تساعد الشركات على التطور والنمو في العصر الرقمي. خبرتنا تشمل أنظمة ERP، الويب، وتطبيقات الجوال.
           </p>
