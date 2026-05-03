@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Light Theme - Wayl.io Inspired */
+  --primary: #6366f1;
+  --primary-soft: rgba(99, 102, 241, 0.1);
+  --secondary: #a855f7;
+  --accent: #38bdf8;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(99, 102, 241, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  --gradient-surface: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+  --shadow-md: 0 10px 30px rgba(99, 102, 241, 0.05);
+  --shadow-lg: 0 20px 50px rgba(99, 102, 241, 0.08);
+  --shadow-premium: 0 30px 60px rgba(99, 102, 241, 0.12);
+  
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+
+  --nav-height: 90px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  overflow-x: hidden;
+  direction: rtl; /* Explicitly set direction */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif;
+  color: #1e293b;
+  font-weight: 700;
+  letter-spacing: 0; /* Reset letter spacing for Arabic */
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.card-glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-glass:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg), var(--shadow-premium);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.section {
+  padding: 10rem 0;
+  position: relative;
+}
+
+/* Fix for icons and RTL */
+svg {
+  transform: scaleX(var(--rtl-scale, 1));
+}
+
+[dir="rtl"] {
+  --rtl-scale: -1;
+}
+
+/* Ensure common icons don't flip if they shouldn't */
+.no-flip svg {
+  --rtl-scale: 1;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+}

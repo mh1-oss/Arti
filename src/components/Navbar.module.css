@@ -1,0 +1,148 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: height 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  background: transparent;
+}
+
+.scrolled {
+  height: 75px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  /* Removed border-bottom to avoid the "black line" glitch */
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.05);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #1e293b;
+}
+
+.services {
+  font-weight: 500;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+.desktopLinks {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #64748b;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.link:hover::after, .active::after {
+  width: 100%;
+}
+
+.link:hover, .active {
+  color: #1e293b;
+}
+
+.cta {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+}
+
+.mobileToggle {
+  display: none;
+  background: #f1f5f9;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--card-border);
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 992px) {
+  .desktopLinks {
+    display: none;
+  }
+  .mobileToggle {
+    display: flex;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+.mobileLink {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  padding: 0.5rem 0;
+}
+
+.mobileCta {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 700;
+  margin-top: 1rem;
+}

@@ -1,0 +1,135 @@
+.aboutPage {
+  background: var(--background);
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.hero {
+  padding: 6rem 0;
+  text-align: center;
+  background: var(--gradient-surface);
+}
+
+.heroContent h1 {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.heroContent p {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  opacity: 0.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.statItem {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-md);
+}
+
+.statItem h3 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statItem p {
+  font-weight: 700;
+  opacity: 0.6;
+  font-size: 1.1rem;
+}
+
+.missionVision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.card {
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--radius-lg);
+}
+
+.cardIcon {
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.card h2 {
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  margin-bottom: 1.5rem;
+}
+
+.card p {
+  font-size: 1.15rem;
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+.values {
+  background: #f8fafc;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.valueItem {
+  padding: 3rem;
+  background: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s ease;
+}
+
+.valueItem:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.valueItem h3 {
+  font-size: 1.8rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.valueItem p {
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .missionVision {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .statItem {
+    padding: 2rem 1rem;
+  }
+}
