@@ -38,9 +38,9 @@ const ERPPage = () => {
     try {
       const response = await fetch("https://api.github.com/repos/mh1-oss/erp-updates/releases/latest");
       const data = await response.json();
-      const exeAsset = data.assets.find((asset: any) => asset.name.endsWith(".exe"));
-      if (exeAsset) {
-        window.location.href = exeAsset.browser_download_url;
+      const zipAsset = data.assets.find((asset: any) => asset.name.endsWith(".zip"));
+      if (zipAsset) {
+        window.location.href = zipAsset.browser_download_url;
       } else {
         window.open("https://github.com/mh1-oss/erp-updates/releases/latest", "_blank");
       }
