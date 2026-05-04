@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://arti-6go.pages.dev'),
   title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
   description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية. برمجيات مستقبلية لنمو عملك.",
   keywords: ["ERP", "تطوير برمجيات", "تطوير مواقع", "تطبيقات جوال", "حلول سحابية", "آرتي للبرمجيات"],
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
     description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية.",
-    url: "https://arti-corp.pages.dev",
+    url: "https://arti-6go.pages.dev",
     siteName: "آرتي للخدمات البرمجية",
     locale: "ar_IQ",
     type: "website",
@@ -42,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body style={{ paddingTop: 'var(--nav-height)' }}>
+      <body style={{ paddingTop: 'var(--nav-height)' }} suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />
