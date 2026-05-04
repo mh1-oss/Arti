@@ -120,6 +120,25 @@ svg {
   --rtl-scale: 1;
 }
 
+/* Custom Scrollbar for a Premium Look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+  border: 3px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
 @media (max-width: 768px) {
   .section { padding: 4rem 0; }
   .container { padding: 0 1.25rem; }
