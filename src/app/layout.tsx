@@ -10,15 +10,19 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arti-6go.pages.dev'),
+  metadataBase: new URL('https://arti-software.com'),
   title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
   description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية. برمجيات مستقبلية لنمو عملك.",
-  keywords: ["ERP", "تطوير برمجيات", "تطوير مواقع", "تطبيقات جوال", "حلول سحابية", "آرتي للبرمجيات"],
+  keywords: [
+    "ERP", "تطوير برمجيات", "تطوير مواقع", "تطبيقات جوال", "حلول سحابية", 
+    "آرتي للبرمجيات", "شركات برمجة", "برمجة تطبيقات", "تصميم مواقع", 
+    "انظمة محاسبية", "نقاط بيع", "برمجة خاصة", "حلول تقنية", "POS"
+  ],
   authors: [{ name: "آرتي للخدمات البرمجية" }],
   openGraph: {
     title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
     description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية.",
-    url: "https://arti-6go.pages.dev",
+    url: "https://arti-software.com",
     siteName: "آرتي للخدمات البرمجية",
     locale: "ar_IQ",
     type: "website",
