@@ -12,8 +12,9 @@ import {
   Sparkles,
   Clock,
   Building2,
-  User,
-  HelpCircle
+  HelpCircle,
+  Mail,
+  User
 } from "lucide-react";
 import styles from "./Contact.module.css";
 import Button from "@/components/Button";
@@ -21,6 +22,7 @@ import Button from "@/components/Button";
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     business: "",
     phone: "",
     service: "نظام آرتي ERP",
@@ -28,18 +30,43 @@ const ContactPage = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPhoneError("");
     if (!formData.name || !formData.phone) return;
 
-    // Create formatted WhatsApp message
-    const message = `مرحباً آرتي للبرمجيات،%0A%0A*طلب جديد من الموقع:*%0A- *الاسم:* ${encodeURIComponent(formData.name)}%0A- *النشاط / الشركة:* ${encodeURIComponent(formData.business || "غير محدد")}%0A- *رقم الهاتف:* ${encodeURIComponent(formData.phone)}%0A- *الخدمة المطلوبة:* ${encodeURIComponent(formData.service)}%0A- *التفاصيل:* ${encodeURIComponent(formData.details || "أرغب بمزيد من المعلومات")}`;
-    
-    setSubmitted(true);
-    setTimeout(() => {
-      window.open(`https://wa.me/9647801814088?text=${message}`, "_blank");
-    }, 400);
+    // Simple phone validation: minimum 10 digits, optionally starting with +
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      setPhoneError("يرجى إدخال رقم هاتف صحيح");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة لاحقاً أو التواصل عبر واتساب.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة لاحقاً أو التواصل عبر واتساب.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const agents = [
@@ -90,8 +117,8 @@ const ContactPage = () => {
               {submitted ? (
                 <div className={styles.successBox}>
                   <CheckCircle2 size={48} className={styles.successIcon} />
-                  <h4>تم تجهيز طلبك بنجاح!</h4>
-                  <p>جاري تحويلك إلى محادثة واتساب المباشرة لمتابعة طلبك فوراً...</p>
+                  <h4>تم استلام طلبك بنجاح!</h4>
+                  <p>سيقوم فريق التطوير بمراجعة متطلباتك والتواصل معك في أقرب وقت ممكن.</p>
                   <Button 
                     size="md" 
                     className={styles.reopenBtn}
@@ -112,6 +139,20 @@ const ContactPage = () => {
                         placeholder="أدخل اسمك الكريم"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label>البريد الإلكتروني (اختياري)</label>
+                    <div className={styles.inputWithIcon}>
+                      <Mail size={18} className={styles.fieldIcon} />
+                      <input 
+                        type="email" 
+                        placeholder="أدخل بريدك الإلكتروني (للتواصل عبر الإيميل)"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        dir="ltr"
                       />
                     </div>
                   </div>
@@ -139,9 +180,14 @@ const ContactPage = () => {
                         dir="ltr"
                         placeholder="+964 780 000 0000"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, phone: e.target.value });
+                          setPhoneError(""); // Clear error on change
+                        }}
+                        className={phoneError ? styles.inputError : ""}
                       />
                     </div>
+                    {phoneError && <span style={{ color: "#ef4444", fontSize: "0.85rem", marginTop: "0.4rem", display: "block" }}>{phoneError}</span>}
                   </div>
 
                   <div className={styles.inputGroup}>
@@ -169,8 +215,8 @@ const ContactPage = () => {
                     />
                   </div>
 
-                  <Button size="lg" className={styles.submitBtn}>
-                    <Send size={18} /> إرسال عبر واتساب فوراً
+                  <Button type="submit" size="lg" className={styles.submitBtn} disabled={isSubmitting}>
+                    <Send size={18} /> {isSubmitting ? 'جاري الإرسال...' : 'إرسال الطلب'}
                   </Button>
                 </form>
               )}

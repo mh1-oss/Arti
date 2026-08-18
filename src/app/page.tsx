@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, Variants, AnimatePresence } from "framer-motion";
+import { motion, Variants, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { 
   Database, 
   Globe, 
@@ -121,6 +121,8 @@ const Home = () => {
       } 
     },
   };
+  const { scrollY } = useScroll();
+  const shapeOpacity = useTransform(scrollY, [0, 400], [0.6, 0]);
 
   return (
     <div className={styles.home}>
@@ -141,10 +143,40 @@ const Home = () => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className={styles.floatDot3}
         />
+        {/* Brand Inspired Shapes with Scroll Fade */}
+        <motion.div 
+          initial={{ scale: 0, y: 40, rotate: 0 }}
+          animate={{ scale: 1, y: 0, rotate: 45 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          style={{ opacity: shapeOpacity }}
+          className={styles.brandShape1}
+        />
+        <motion.div 
+          initial={{ scale: 0, y: 40, rotate: 0 }}
+          animate={{ scale: 1, y: 0, rotate: 45 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          style={{ opacity: shapeOpacity }}
+          className={styles.brandShape2}
+        />
+        <motion.div 
+          initial={{ scale: 0, y: 40, rotate: 0 }}
+          animate={{ scale: 1, y: 0, rotate: 45 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          style={{ opacity: shapeOpacity }}
+          className={styles.brandShape3}
+        />
+        <motion.div 
+          initial={{ scale: 0, y: 40, rotate: 0 }}
+          animate={{ scale: 1, y: 0, rotate: 45 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+          style={{ opacity: shapeOpacity }}
+          className={styles.brandShape4}
+        />
       </div>
 
       {/* Hero Section */}
       <section className={styles.hero}>
+        <div className={styles.gridBackground} />
         <div className="container">
           <div className={styles.heroLayout}>
             <motion.div 
@@ -154,7 +186,7 @@ const Home = () => {
               className={styles.heroContent}
             >
               <motion.h1 variants={itemVariants} className={styles.headline}>
-                نبني <span className="text-gradient">الجيل القادم</span> من الأنظمة والتطبيقات البرمجية
+                نبني <span className="text-gradient typing-effect">الجيل القادم</span> من الأنظمة والتطبيقات البرمجية
               </motion.h1>
 
               <motion.p variants={itemVariants} className={styles.subheadline}>
@@ -163,7 +195,10 @@ const Home = () => {
 
               <motion.div variants={itemVariants} className={styles.heroCtas}>
                 <Link href="/contact">
-                  <Button size="lg" className={styles.primaryCtaBtn}>ابدأ مشروعك الآن</Button>
+                  <Button size="lg" className={styles.primaryCtaBtn}>
+                    ابدأ مشروعك الآن
+                    <ArrowLeft size={16} className={styles.ctaIcon} />
+                  </Button>
                 </Link>
                 <Link href="/erp">
                   <Button variant="glass" size="lg">اكتشف نظام ERP</Button>

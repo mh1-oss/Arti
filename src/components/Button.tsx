@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "glass" | "outline";
   size?: "sm" | "md" | "lg";
-  className?: string;
-  onClick?: () => void;
-  type?: "button" | "submit";
 }
 
 const Button = ({ 
@@ -15,13 +12,13 @@ const Button = ({
   variant = "primary", 
   size = "md", 
   className = "", 
-  onClick,
-  type = "button"
+  type = "button",
+  ...props
 }: ButtonProps) => {
   const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]} ${className}`;
   
   return (
-    <button type={type} className={buttonClass} onClick={onClick}>
+    <button type={type} className={buttonClass} {...props}>
       {children}
     </button>
   );
