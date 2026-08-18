@@ -39,15 +39,17 @@
 }
 
 .glass {
-  background: var(--glass-bg);
+  background: #f8fafc;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  color: var(--foreground);
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .glass:hover {
-  background: var(--glass-border);
+  background: #f1f5f9;
+  border-color: #94a3b8;
   transform: translateY(-2px);
 }
 

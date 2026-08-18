@@ -1,49 +1,103 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import { 
   Database, 
   Globe, 
   Smartphone, 
   Cloud, 
-  ArrowLeft,
-  ShieldCheck,
-  Zap,
-  MousePointer2,
+  ArrowLeft, 
+  ShieldCheck, 
+  Zap, 
+  CheckCircle2, 
+  TrendingUp, 
+  Package, 
+  Users, 
+  MapPin, 
+  MessageCircle, 
+  ExternalLink,
+  Lock,
+  Layers,
   Sparkles,
-  Layout
+  Cpu,
+  Server
 } from "lucide-react";
 import styles from "./Home.module.css";
 import Button from "@/components/Button";
 
 const Home = () => {
+  const [activeTab, setActiveTab] = useState<"sales" | "inventory" | "hr">("sales");
+
   const services = [
     { 
-      title: "آرتي ERP", 
-      desc: "إدارة شاملة للأعمال من المحاسبة إلى الرواتب والمخازن.", 
+      title: "آرتي ERP المتكامل", 
+      desc: "إدارة شاملة للمبيعات، المخازن، الحسابات، والفواتير بنظام سحابي فائق السرعة والأمان.", 
       icon: <Database className="text-gradient" />,
+      tag: "الأكثر طلباً",
+      features: ["نقاط البيع والفواتير السريعة", "متابعة المخزون اللحظية", "تقارير الأرباح والميزانيات"],
       href: "/erp"
     },
     { 
-      title: "تطوير المواقع", 
-      desc: "تطبيقات ويب مذهلة وعالية الأداء مصممة للتوسع والنمو.", 
+      title: "تطوير مواقع الويب الحديثة", 
+      desc: "مواقع وتطبيقات ويب سريعة بتصاميم عصرية وتقنيات Next.js ترفع مبيعاتك وتعزز علامتك.", 
       icon: <Globe className="text-gradient" />,
+      tag: "توسع رقمي",
+      features: ["سرعة تحميل استثنائية", "متوافقة 100% مع الجوال", "تحسين محركات البحث SEO"],
       href: "/services"
     },
     { 
-      title: "تطبيقات الجوال", 
-      desc: "تجارب تطبيقات جوال أصلية ومبتكرة يعشقها المستخدمون.", 
+      title: "تطبيقات الجوال الذكية", 
+      desc: "تطبيقات أصلية وهجينة لنظامي iOS و Android لتصل إلى عملائك أينما كانوا بتجربة مستخدم لا تُنسى.", 
       icon: <Smartphone className="text-gradient" />,
+      tag: "iOS & Android",
+      features: ["تصميم UI/UX فاخر وسلس", "إشعارات تفاعلية فورية", "أداء سريع وخفيف على الهاتف"],
       href: "/services"
     },
     { 
-      title: "الحلول السحابية", 
-      desc: "بنية تحتية سحابية آمنة وموثوقة وقابلة للتوسع لأعمالك.", 
+      title: "الحلول السحابية والربط", 
+      desc: "بنية تحتية سحابية آمنة، قواعد بيانات عالية الموثوقية، وربط APIs مخصص لأعمالك.", 
       icon: <Cloud className="text-gradient" />,
+      tag: "بنية آمنة",
+      features: ["نسخ احتياطي آلي وتشفير", "جاهزية 99.9% بدون انقطاع", "ربط الفروع والأنظمة ببعضها"],
       href: "/services"
     },
+  ];
+
+  const processSteps = [
+    {
+      number: "01",
+      title: "جلسة تحليل المتطلبات",
+      desc: "نستمع إليك باهتمام، ندرس تفاصيل عملك، ونحدد النظام والتقنيات الأنسب لتحقيق أهدافك.",
+      icon: <Layers size={24} />
+    },
+    {
+      number: "02",
+      title: "تصميم تجربة المستخدم",
+      desc: "نبني واجهات تفاعلية حديثة وسهلة الاستخدام تراها وتجربها بنفسك قبل كتابة الكود البرمجي.",
+      icon: <Sparkles size={24} />
+    },
+    {
+      number: "03",
+      title: "البرمجة وبناء النظام",
+      desc: "هندسة برمجية نظيفة وقواعد بيانات سريعة وآمنة مع اختبارات دقيقة لكل سيناريوهات العمل.",
+      icon: <Cpu size={24} />
+    },
+    {
+      number: "04",
+      title: "الإطلاق والتدريب المستمر",
+      desc: "تثبيت النظام، تدريب فريقك، ومتابعة فنية مباشرة لضمان تشغيل سلس ومستقر بدون أي توقف.",
+      icon: <Server size={24} />
+    }
+  ];
+
+  const techStack = [
+    { name: "Next.js & React", role: "واجهات فائقة السرعة" },
+    { name: "PostgreSQL", role: "أمان وموثوقية مالية" },
+    { name: "Flutter & iOS/Android", role: "تطبيقات جوال رائدة" },
+    { name: "Cloud & Docker", role: "استقرار 99.9%" },
+    { name: "256-bit SSL", role: "تشفير وحماية البيانات" }
   ];
 
   const containerVariants: Variants = {
@@ -51,19 +105,19 @@ const Home = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 25 },
     visible: { 
       opacity: 1, 
       y: 0, 
       transition: { 
-        duration: 0.8,
-        ease: [0.33, 1, 0.68, 1] // Custom cubic-bezier instead of string to avoid TS error
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1]
       } 
     },
   };
@@ -74,17 +128,17 @@ const Home = () => {
       <div className={styles.decorations}>
         <motion.div 
           animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-          transition={{ duration: 8, repeat: Infinity }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className={styles.floatDot1}
         />
         <motion.div 
           animate={{ y: [0, 40, 0], x: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           className={styles.floatDot2}
         />
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 5, repeat: Infinity }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className={styles.floatDot3}
         />
       </div>
@@ -99,60 +153,224 @@ const Home = () => {
               variants={containerVariants}
               className={styles.heroContent}
             >
-              <motion.span variants={itemVariants} className={styles.badge}>
-                <Sparkles size={14} /> إعادة تعريف البرمجيات لعام 2026
-              </motion.span>
               <motion.h1 variants={itemVariants} className={styles.headline}>
-                نبني <span className="text-gradient">الجيل القادم</span> من الحلول البرمجية
+                نبني <span className="text-gradient">الجيل القادم</span> من الأنظمة والتطبيقات البرمجية
               </motion.h1>
+
               <motion.p variants={itemVariants} className={styles.subheadline}>
-                خدمات برمجية متميزة للعلامات التجارية الطموحة. نحن نصنع تجارب رقمية سريعة وجميلة ومبنية للنمو.
+                نساعد الشركات والمتاجر على أتمتة عملياتها ومضاعفة أرباحها من خلال نظام <strong>آرتي ERP</strong> وتطوير تطبيقات ومواقع متقدمة بمعايير عالمية.
               </motion.p>
+
               <motion.div variants={itemVariants} className={styles.heroCtas}>
                 <Link href="/contact">
-                  <Button size="lg">ابدأ الآن</Button>
+                  <Button size="lg" className={styles.primaryCtaBtn}>ابدأ مشروعك الآن</Button>
                 </Link>
                 <Link href="/erp">
-                  <Button variant="glass" size="lg">اكتشف ERP</Button>
+                  <Button variant="glass" size="lg">اكتشف نظام ERP</Button>
                 </Link>
+              </motion.div>
+
+              {/* Quick Trust Points */}
+              <motion.div variants={itemVariants} className={styles.heroTrustBadges}>
+                <div className={styles.trustItem}>
+                  <CheckCircle2 size={16} className={styles.trustIcon} />
+                  <span>استشارة وعرض تجريبي مجاناً</span>
+                </div>
+                <div className={styles.trustItem}>
+                  <CheckCircle2 size={16} className={styles.trustIcon} />
+                  <span>دعم مباشر من المطور</span>
+                </div>
+                <div className={styles.trustItem}>
+                  <CheckCircle2 size={16} className={styles.trustIcon} />
+                  <span>مقر ووكيل معتمد في شارع الصناعة</span>
+                </div>
               </motion.div>
             </motion.div>
 
+            {/* Interactive Hero Visual: Live ERP Dashboard Preview */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={styles.heroVisual}
             >
-              <div className={styles.heroCard}>
-                <div className={styles.cardHeader}>
-                  <MousePointer2 size={16} className={styles.cursor} />
-                  <div className={styles.userBadge}>أنظمة آرتي الذكية</div>
-                </div>
-                <div className={styles.cardContent}>
-                  <div className={styles.graphPlaceholder}>
-                    <motion.div 
-                      initial={{ height: 0 }}
-                      animate={{ height: "60%" }}
-                      transition={{ duration: 2, delay: 0.5 }}
-                      className={styles.bar}
-                    />
-                    <motion.div 
-                      initial={{ height: 0 }}
-                      animate={{ height: "90%" }}
-                      transition={{ duration: 2, delay: 0.7 }}
-                      className={styles.bar}
-                    />
-                    <motion.div 
-                      initial={{ height: 0 }}
-                      animate={{ height: "40%" }}
-                      transition={{ duration: 2, delay: 0.9 }}
-                      className={styles.bar}
-                    />
+              <div className={styles.dashboardCard}>
+                {/* Window Top Bar */}
+                <div className={styles.dashboardHeader}>
+                  <div className={styles.windowControls}>
+                    <span className={styles.dotClose} />
+                    <span className={styles.dotMin} />
+                    <span className={styles.dotMax} />
                   </div>
+                  <div className={styles.windowTitle}>لوحة تحكم آرتي ERP • إصدار 2026</div>
+                  <div className={styles.liveBadge}>
+                    <span className={styles.liveDot} /> نشط لحظياً
+                  </div>
+                </div>
+
+                {/* Dashboard Tabs */}
+                <div className={styles.dashboardTabs}>
+                  <button 
+                    className={`${styles.dashTab} ${activeTab === "sales" ? styles.activeDashTab : ""}`}
+                    onClick={() => setActiveTab("sales")}
+                  >
+                    <TrendingUp size={15} /> المبيعات والفواتير
+                  </button>
+                  <button 
+                    className={`${styles.dashTab} ${activeTab === "inventory" ? styles.activeDashTab : ""}`}
+                    onClick={() => setActiveTab("inventory")}
+                  >
+                    <Package size={15} /> المخازن والجرد
+                  </button>
+                  <button 
+                    className={`${styles.dashTab} ${activeTab === "hr" ? styles.activeDashTab : ""}`}
+                    onClick={() => setActiveTab("hr")}
+                  >
+                    <Users size={15} /> الكادر والصلاحيات
+                  </button>
+                </div>
+
+                {/* Dashboard Metrics Content */}
+                <div className={styles.dashboardBody}>
+                  <AnimatePresence mode="wait">
+                    {activeTab === "sales" && (
+                      <motion.div
+                        key="sales"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25 }}
+                        className={styles.tabContent}
+                      >
+                        <div className={styles.metricsGrid}>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>إجمالي المبيعات اليوم</span>
+                            <span className={styles.metricValue}>14,850,000 د.ع</span>
+                            <span className={styles.metricTrend}>+18.4% نمو إيجابي ↗</span>
+                          </div>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>الفواتير المنجزة</span>
+                            <span className={styles.metricValue}>128 فاتورة</span>
+                            <span className={styles.metricSub}>زمن الإصدار: 1.2 ثانية</span>
+                          </div>
+                        </div>
+
+                        {/* Recent Transactions Preview */}
+                        <div className={styles.transactionsList}>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>فاتورة جملة #4092</span>
+                            <span className={styles.transAmount}>+ 1,450,000 د.ع</span>
+                            <span className={styles.transStatus}>تم الاستلام ✓</span>
+                          </div>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>نقطة بيع فرع الكرادة</span>
+                            <span className={styles.transAmount}>+ 680,000 د.ع</span>
+                            <span className={styles.transStatus}>مكتمل ✓</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "inventory" && (
+                      <motion.div
+                        key="inventory"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25 }}
+                        className={styles.tabContent}
+                      >
+                        <div className={styles.metricsGrid}>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>إجمالي الأصناف المتاحة</span>
+                            <span className={styles.metricValue}>1,420 صنف</span>
+                            <span className={styles.metricTrend}>تنبيه نفاد ذكي ⚡</span>
+                          </div>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>قيمة المخزون الإجمالية</span>
+                            <span className={styles.metricValue}>85,200,000 د.ع</span>
+                            <span className={styles.metricSub}>جرد فوري بالباركود</span>
+                          </div>
+                        </div>
+                        <div className={styles.transactionsList}>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>مخزن المركز الرئيسي</span>
+                            <span className={styles.transAmount}>98% كفاية</span>
+                            <span className={styles.transStatus}>مستقر ✓</span>
+                          </div>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>جرد فرع المنصور</span>
+                            <span className={styles.transAmount}>تم التدقيق آلياً</span>
+                            <span className={styles.transStatus}>متطابق ✓</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "hr" && (
+                      <motion.div
+                        key="hr"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25 }}
+                        className={styles.tabContent}
+                      >
+                        <div className={styles.metricsGrid}>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>المستخدمين النشطين</span>
+                            <span className={styles.metricValue}>16 موظف</span>
+                            <span className={styles.metricTrend}>صلاحيات أمان مشددة 🔒</span>
+                          </div>
+                          <div className={styles.metricBox}>
+                            <span className={styles.metricLabel}>حسابات الرواتب</span>
+                            <span className={styles.metricValue}>مؤتمتة بالكامل</span>
+                            <span className={styles.metricSub}>تقرير نهاية الشهر آلي</span>
+                          </div>
+                        </div>
+                        <div className={styles.transactionsList}>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>كاشير 1 (نقطة البيع)</span>
+                            <span className={styles.transAmount}>تسجيل الدخول 09:00</span>
+                            <span className={styles.transStatus}>نشط الآن 🟢</span>
+                          </div>
+                          <div className={styles.transRow}>
+                            <span className={styles.transName}>إدارة الحسابات</span>
+                            <span className={styles.transAmount}>تصدير ميزان المراجعة</span>
+                            <span className={styles.transStatus}>تم بنجاح ✓</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Floating Highlights */}
+                <div className={styles.floatingHighlight1}>
+                  <Zap size={14} className={styles.highlightIcon} /> استجابة فورية 0.05 ثانية
+                </div>
+                <div className={styles.floatingHighlight2}>
+                  <Lock size={14} className={styles.highlightIcon} /> تشفير سحابي آمن
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack & Standards Ribbon */}
+      <section className={styles.techRibbon}>
+        <div className="container">
+          <div className={styles.ribbonHeader}>
+            <span>التقنيات ومعايير الجودة العالمية التي نعتمدها في بناء أنظمتكم</span>
+          </div>
+          <div className={styles.techGrid}>
+            {techStack.map((tech) => (
+              <div key={tech.name} className={styles.techCard}>
+                <span className={styles.techName}>{tech.name}</span>
+                <span className={styles.techRole}>{tech.role}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -166,8 +384,8 @@ const Home = () => {
             viewport={{ once: true }}
             className={styles.sectionHeader}
           >
-            <h2>إمكانيات <span className="text-gradient">مخصصة</span></h2>
-            <p>نحن نحقق التميز من خلال الهندسة المتخصصة والتصميم الفني المبتكر.</p>
+            <h2>حلولنا البرمجية <span className="text-gradient">المتكاملة</span></h2>
+            <p>نصمم ونطور برمجيات مصممة خصيصاً لتناسب متطلبات السوق العراقي والعربي بأعلى سرعة وأعلى استقرار.</p>
           </motion.div>
           
           <motion.div 
@@ -181,14 +399,27 @@ const Home = () => {
               <motion.div 
                 key={service.title}
                 variants={itemVariants}
-                className="card-glass"
+                className={`card-glass ${styles.serviceCardWrapper}`}
               >
                 <div className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>{service.icon}</div>
+                  <div className={styles.cardTopRow}>
+                    <div className={styles.serviceIcon}>{service.icon}</div>
+                    <span className={styles.serviceTag}>{service.tag}</span>
+                  </div>
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
+                  
+                  <ul className={styles.featureList}>
+                    {service.features.map((feat) => (
+                      <li key={feat}>
+                        <CheckCircle2 size={15} className={styles.checkIcon} />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                   <Link href={service.href} className={styles.serviceLink}>
-                    عرض التفاصيل <ArrowLeft size={16} />
+                    اكتشف التفاصيل <ArrowLeft size={16} />
                   </Link>
                 </div>
               </motion.div>
@@ -197,51 +428,86 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className={`${styles.whyUs} section`}>
+      {/* How We Work: 4-Step Working Process */}
+      <section className={`${styles.processSection} section`}>
         <div className="container">
-          <div className={styles.whyUsLayout}>
-            <div className={styles.whyUsText}>
-              <h2>لماذا تختار <span className="text-gradient">الشركات الحديثة</span> آرتي؟</h2>
-              <p>الأداء والموثوقية والتصميم ليست خيارات إضافية لدينا، بل هي جوهر كل بكسل نقوم ببرمجته.</p>
-              
-              <div className={styles.featureGridSmall}>
-                <div className={styles.featureMini}>
-                  <Zap className="text-gradient" />
-                  <h4>سرعة فائقة</h4>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={styles.sectionHeader}
+          >
+            <h2>منهجية العمل <span className="text-gradient">الواضحة</span></h2>
+            <p>خطوات محددة وشفافة من الفكرة الأولى وحتى إطلاق النظام وتدريب كادرك بنجاح.</p>
+          </motion.div>
+
+          <div className={styles.processGrid}>
+            {processSteps.map((step, index) => (
+              <motion.div 
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={styles.processCard}
+              >
+                <div className={styles.processNumber}>{step.number}</div>
+                <div className={styles.processIconBox}>{step.icon}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Local Physical Presence & Agent Spotlight */}
+      <section className={`${styles.agentSpotlight} section`}>
+        <div className="container">
+          <div className={styles.agentBox}>
+            <div className={styles.agentTextContent}>
+              <div className={styles.agentBadge}>
+                <MapPin size={16} /> مقر ووكيل معتمد على أرض الواقع
+              </div>
+              <h2>تفضل بزيارتنا وتجربة النظام <span className="text-gradient">مباشرةً</span></h2>
+              <p>
+                نحن نؤمن بأن الثقة تبنى بالشفافية والوجود الحقيقي. يمكنك زيارة وكيلنا المعتمد في قلب بغداد لتجربة نظام آرتي ERP على أجهزة العرض والتعرف على كافة الحلول.
+              </p>
+              <div className={styles.agentDetails}>
+                <div className={styles.agentDetailItem}>
+                  <strong>الوكيل المعتمد:</strong> مكتب الأسطورة
                 </div>
-                <div className={styles.featureMini}>
-                  <ShieldCheck className="text-gradient" />
-                  <h4>أمان متقدم</h4>
+                <div className={styles.agentDetailItem}>
+                  <strong>العنوان:</strong> شارع الصناعة - مجمع النعمان التجاري - بغداد
                 </div>
-                <div className={styles.featureMini}>
-                  <Layout className="text-gradient" />
-                  <h4>تجربة مستخدم</h4>
-                </div>
-                <div className={styles.featureMini}>
-                  <Database className="text-gradient" />
-                  <h4>بيانات منظمة</h4>
-                </div>
+              </div>
+              <div className={styles.agentActions}>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=مكتب+الأسطورة+مجمع+النعمان+شارع+الصناعة+بغداد" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.mapBtn}
+                >
+                  <ExternalLink size={16} /> الموقع على خرائط غوغل
+                </a>
+                <a 
+                  href="https://wa.me/9647801814088" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.agentWaBtn}
+                >
+                  <MessageCircle size={16} /> تواصل لتحديد موعد زيارة
+                </a>
               </div>
             </div>
 
-            <div className={styles.visualContainer}>
-              <motion.div 
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className={styles.mainVisualCard}
-              >
-                <div className={styles.visualTitle}>مؤشر الأداء</div>
-                <div className={styles.scoreValue}>99%</div>
-                <div className={styles.visualProgress}>
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "99%" }}
-                    transition={{ duration: 1.5 }}
-                    className={styles.progressFill}
-                  />
-                </div>
-              </motion.div>
+            <div className={styles.agentCardSide}>
+              <div className={styles.guaranteeCard}>
+                <ShieldCheck size={42} className={styles.shieldIcon} />
+                <h3>ضمان الاستقرار والدعم الفني</h3>
+                <p>عقد رسمي ودعم فني متواصل مع إمكانية التعديل والتخصيص بما يوافق طبيعة تجارتك ونشاطك.</p>
+                <div className={styles.guaranteePill}>استجابة فورية 24/7</div>
+              </div>
             </div>
           </div>
         </div>
@@ -251,16 +517,23 @@ const Home = () => {
       <section className={styles.footerCta}>
         <div className="container">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className={styles.ctaBoxLarge}
           >
-            <h2>دعنا نبني شيئاً <span className={styles.ctaHighlight}>استثنائياً</span></h2>
-            <p>انضم إلى الجيل القادم من الشركات التي تتوسع مع حلول آرتي الذكية.</p>
-            <Link href="/contact">
-              <Button size="lg">ابدأ الآن</Button>
-            </Link>
+            <h2>جاهز لنقل أعمالك إلى <span className={styles.ctaHighlight}>المستوى التالي</span>؟</h2>
+            <p>تحدث معنا اليوم للحصول على استشارة مجانية وعرض حي وشامل لنظام آرتي ERP أو لمشروعك البرمجي.</p>
+            <div className={styles.ctaButtonsGroup}>
+              <a href="https://wa.me/9647801814088" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className={styles.ctaWaButton}>
+                  <MessageCircle size={20} /> استشارة سريعة عبر واتساب
+                </Button>
+              </a>
+              <Link href="/contact">
+                <Button variant="glass" size="lg">حجز موعد عرض تجريبي</Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

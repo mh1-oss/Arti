@@ -1,167 +1,383 @@
 .aboutPage {
   position: relative;
-  background: var(--background);
-  overflow-x: hidden;
-}
-
-.decorations {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.floatDot1 {
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.floatDot2 {
-  position: absolute;
-  bottom: 15%;
-  left: 5%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
+  background-color: var(--background);
 }
 
 .hero {
-  padding: 10rem 0 6rem;
+  padding: 6rem 0 3.5rem 0;
   text-align: center;
-  position: relative;
 }
 
-.heroContent h1 {
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-
-.heroContent p {
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
-  opacity: 0.7;
-  max-width: 700px;
+.heroContent {
+  max-width: 750px;
   margin: 0 auto;
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.statItem {
-  text-align: center;
-  padding: 3rem 2rem;
-  border-radius: var(--radius-lg);
-  background: white;
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-md);
-}
-
-.statItem h3 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 0.5rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.statItem p {
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  opacity: 0.6;
-  font-size: 1.1rem;
-}
-
-.missionVision {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-
-.card {
-  padding: clamp(2rem, 5vw, 4rem);
-  border-radius: var(--radius-lg);
-}
-
-.cardIcon {
-  margin-bottom: 2rem;
   color: var(--primary);
-}
-
-.card h2 {
-  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
   margin-bottom: 1.5rem;
 }
 
-.card p {
-  font-size: 1.15rem;
-  opacity: 0.7;
+.heroContent h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  color: #64748b;
   line-height: 1.7;
 }
 
-.values {
+/* Story Card */
+.storyCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 3.5rem;
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+  box-shadow: 0 15px 40px -10px rgba(15, 23, 42, 0.05);
+}
+
+.sectionTag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.storyText h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #0f172a;
+}
+
+.storyText p {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.storyStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.statBox {
   background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.statBox h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  font-family: 'Cairo', sans-serif;
+}
+
+.statBox p {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Pillars Section */
+.pillarsSection {
+  background: #fbfcfe;
 }
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
 }
 
 .sectionHeader h2 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 1rem;
+  font-weight: 800;
 }
 
-.valuesGrid {
+.sectionHeader p {
+  font-size: 1.15rem;
+  color: #64748b;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.pillarsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.pillarCard {
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pillarIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: rgba(99, 102, 241, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.pillarCard h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.pillarCard p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* Mission & Vision */
+.missionVisionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
 }
 
-.valueItem {
+.mvCard {
   padding: 3rem;
-  background: white;
-  border-radius: var(--radius-md);
-  text-align: center;
-  border: 1px solid #e2e8f0;
-  transition: all 0.4s ease;
+  border-radius: 24px;
 }
 
-.valueItem:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+.mvIcon {
+  color: var(--primary);
+  margin-bottom: 1.25rem;
 }
 
-.valueItem h3 {
+.mvCard h2 {
   font-size: 1.8rem;
-  margin: 1.5rem 0 1rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  color: #0f172a;
 }
 
-.valueItem p {
-  opacity: 0.6;
+.mvCard p {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* Bottom CTA */
+.bottomCta {
+  padding: 4rem 0 6rem 0;
+}
+
+.ctaBox {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  border-radius: 32px;
+  padding: clamp(3rem, 6vw, 4.5rem) 2rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 25px 60px -15px rgba(49, 46, 129, 0.35);
+}
+
+.ctaBox h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  font-weight: 800;
+}
+
+.ctaBox p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
   line-height: 1.6;
 }
 
-@media (max-width: 992px) {
-  .missionVision {
+.ctaButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.ctaWaBtn {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4) !important;
+}
+
+@media (max-width: 1024px) {
+  .storyCard {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.75rem;
+    gap: 2.5rem;
+  }
+
+  .missionVisionGrid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .statItem {
+@media (max-width: 768px) {
+  .hero {
+    padding: 3.5rem 0 2rem 0;
+  }
+
+  .storyCard {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .mvCard {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ctaButtons a, .ctaButtons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+  .heroTitle {
+    font-size: 1.85rem;
+  }
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+  .storyCard {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+  .storyContent h2 {
+    font-size: 1.45rem;
+  }
+  .storyContent p {
+    font-size: 0.9rem;
+  }
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .pillarCard {
+    padding: 1.5rem 1.25rem;
+  }
+  .pillarCard h3 {
+    font-size: 1.2rem;
+  }
+  .pillarCard p {
+    font-size: 0.85rem;
+  }
+  .mvCard {
+    padding: 1.5rem 1.25rem;
+  }
+  .mvCard h2 {
+    font-size: 1.45rem;
+  }
+  .mvCard p {
+    font-size: 0.9rem;
+  }
+  .ctaBox {
+    padding: 2.5rem 1.25rem;
+  }
+  .ctaBox h2 {
+    font-size: 1.6rem;
+  }
+  .ctaBox p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding: 2rem 0 1.25rem 0;
+  }
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+  .heroSubtitle {
+    font-size: 0.85rem;
+  }
+  .storyCard {
+    padding: 1.25rem 0.85rem;
+    gap: 1.25rem;
+    border-radius: 16px;
+  }
+  .storyContent h2 {
+    font-size: 1.35rem;
+  }
+  .storyContent p {
+    font-size: 0.85rem;
+  }
+  .pillarsGrid {
+    gap: 1rem;
+  }
+  .pillarCard {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+  .pillarCard h3 {
+    font-size: 1.1rem;
+  }
+  .pillarCard p {
+    font-size: 0.8rem;
+  }
+  .mvCard {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+  .mvCard h2 {
+    font-size: 1.35rem;
+  }
+  .mvCard p {
+    font-size: 0.85rem;
+  }
+  .ctaBox {
     padding: 2rem 1rem;
+  }
+  .ctaBox h2 {
+    font-size: 1.4rem;
+  }
+  .ctaBox p {
+    font-size: 0.85rem;
   }
 }

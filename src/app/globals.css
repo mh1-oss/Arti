@@ -28,7 +28,20 @@
   --radius-lg: 32px;
   --radius-full: 9999px;
 
-  --nav-height: 90px;
+  --nav-height: 80px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 68px;
+  }
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
 }
 
 * {
@@ -44,7 +57,10 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   overflow-x: hidden;
-  direction: rtl; /* Explicitly set direction */
+  max-width: 100%;
+  width: 100%;
+  direction: rtl;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,26 +114,14 @@ a {
 .container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section {
-  padding: 10rem 0;
+  padding: 6.5rem 0;
   position: relative;
-}
-
-/* Fix for icons and RTL */
-svg {
-  transform: scaleX(var(--rtl-scale, 1));
-}
-
-[dir="rtl"] {
-  --rtl-scale: -1;
-}
-
-/* Ensure common icons don't flip if they shouldn't */
-.no-flip svg {
-  --rtl-scale: 1;
 }
 
 /* Custom Scrollbar for a Premium Look */
@@ -139,7 +143,17 @@ svg {
   background: var(--primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .section { padding: 4rem 0; }
+  .container { padding: 0 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 2.75rem 0; }
   .container { padding: 0 1.25rem; }
+}
+
+@media (max-width: 380px) {
+  .section { padding: 2.25rem 0; }
+  .container { padding: 0 1.15rem; }
 }

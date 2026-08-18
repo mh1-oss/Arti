@@ -1,186 +1,463 @@
 .contactPage {
-  background: var(--background);
-  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+  position: relative;
+  background-color: var(--background);
 }
 
 .hero {
-  padding: 6rem 0;
+  padding: 6rem 0 3.5rem 0;
   text-align: center;
-  background: var(--gradient-surface);
 }
 
-.heroContent h1 {
-  font-size: clamp(2rem, 8vw, 4rem);
-  margin-bottom: 1.5rem;
-}
-
-.heroContent p {
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
-  opacity: 0.7;
-  max-width: 600px;
+.heroContent {
+  max-width: 700px;
   margin: 0 auto;
 }
 
-.contactLayout {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: clamp(2rem, 5vw, 6rem);
-  align-items: start;
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
 }
 
-.contactInfo {
+.heroContent h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #0f172a;
+}
+
+.heroContent p {
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.95fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+/* Form Card */
+.formCard {
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.formHeader {
+  margin-bottom: 2rem;
+}
+
+.formHeader h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+}
+
+.formHeader p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fieldIcon {
+  position: absolute;
+  right: 1.1rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.inputWithIcon input {
+  padding-right: 3rem !important;
+}
+
+.contactForm input,
+.contactForm select,
+.contactForm textarea {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.contactForm input:focus,
+.contactForm select:focus,
+.contactForm textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.selectInput {
+  cursor: pointer;
+}
+
+.contactForm textarea {
+  resize: vertical;
+}
+
+.submitBtn {
+  background: var(--gradient-primary);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+  margin-top: 0.5rem;
+}
+
+.successBox {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.successIcon {
+  color: #10b981;
+}
+
+.successBox h4 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.successBox p {
+  color: #64748b;
+  max-width: 380px;
+}
+
+.reopenBtn {
+  margin-top: 1rem;
+}
+
+/* Info Column */
+.infoCol {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.infoCard {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-sm);
-}
-
-.iconBox {
-  width: 50px;
-  height: 50px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.infoCard h3 {
-  font-size: 1rem;
-  opacity: 0.5;
-  margin-bottom: 0.2rem;
-}
-
-.infoCard p {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #1e293b;
-}
-
-.whatsappCard {
-  background: #25d366;
-  color: white;
-  padding: 2.5rem 2rem;
-  border-radius: var(--radius-lg);
+.whatsappBox {
+  background: #10b981;
+  color: #ffffff;
+  border-radius: 24px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.25);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2);
 }
 
-.whatsappCard h3 {
+.waTop {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.waTop h3 {
   font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.whatsappCard p {
-  opacity: 0.9;
-  margin-bottom: 1rem;
-}
-
-.waBtn {
-  background: white !important;
-  color: #25d366 !important;
-  border: none;
   font-weight: 800;
+  margin-bottom: 0.25rem;
 }
 
-.waBtn:hover {
-  transform: scale(1.05);
+.waTop p {
+  font-size: 0.92rem;
+  opacity: 0.9;
 }
 
-.agentsContainer {
-  padding: 2rem 0;
+.waDirectLink {
+  width: 100%;
 }
 
-.sectionTitle {
-  font-size: 2.2rem;
-  margin-bottom: 2.5rem;
-}
-
-.agentsGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.waButton {
+  background: #ffffff !important;
+  color: #047857 !important;
+  width: 100%;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
 .agentCard {
-  padding: 2.5rem;
-  background: white;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  display: flex;
-  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.agentBadge {
+  display: inline-flex;
   align-items: center;
-  transition: all 0.3s ease;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
 }
 
-.agentCard:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-lg);
-}
-
-.agentInfo {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.agentInfo h4 {
+.agentCard h3 {
   font-size: 1.4rem;
-  margin-bottom: 0.4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
 }
 
-.agentInfo p {
-  opacity: 0.6;
-  font-weight: 600;
+.agentLocation {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }
 
-.mapLink {
+.agentMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metaItem {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  font-size: 0.88rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.metaIcon {
   color: var(--primary);
+}
+
+.agentCardActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.mapBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.85rem;
+  border-radius: 14px;
   font-weight: 700;
-  padding: 0.8rem 1.5rem;
-  background: var(--primary-soft);
-  border-radius: var(--radius-full);
-  transition: all 0.3s ease;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.mapLink:hover {
-  background: var(--primary);
-  color: white;
+.mapBtn:hover {
+  background: #1e293b;
 }
 
-@media (max-width: 992px) {
-  .contactLayout {
+.supportNote {
+  display: flex;
+  gap: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.4rem;
+}
+
+.noteIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.supportNote h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  color: #0f172a;
+}
+
+.supportNote p {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .contactGrid {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
 }
 
-@media (max-width: 640px) {
-  .agentCard {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
+@media (max-width: 768px) {
+  .hero {
+    padding: 3.5rem 0 2rem 0;
   }
-  .agentInfo {
-    flex-direction: column;
-    gap: 1rem;
+
+  .formCard {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .contactForm input,
+  .contactForm select,
+  .contactForm textarea {
+    font-size: 1rem; /* Prevents auto-zoom on iOS */
+  }
+
+  .whatsappBox {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .agentCard {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .supportNote {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+  .heroTitle {
+    font-size: 1.85rem;
+  }
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+  .formCard {
+    padding: 1.5rem 1rem;
+  }
+  .whatsappBox {
+    padding: 1.5rem 1rem;
+  }
+  .waTop h3 {
+    font-size: 1.25rem;
+  }
+  .waTop p {
+    font-size: 0.85rem;
+  }
+  .agentCard {
+    padding: 1.5rem 1rem;
+  }
+  .agentCard h3 {
+    font-size: 1.25rem;
+  }
+  .agentLocation {
+    font-size: 0.85rem;
+  }
+  .supportNote {
+    padding: 1.25rem 1rem;
+  }
+  .supportNote h4 {
+    font-size: 0.9rem;
+  }
+  .supportNote p {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding: 2rem 0 1.25rem 0;
+  }
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+  .heroSubtitle {
+    font-size: 0.85rem;
+  }
+  .formCard {
+    padding: 1.25rem 0.85rem;
+    border-radius: 16px;
+  }
+  .formGroup label {
+    font-size: 0.8rem;
+  }
+  .whatsappBox {
+    padding: 1.25rem 0.85rem;
+    border-radius: 16px;
+  }
+  .waTop h3 {
+    font-size: 1.15rem;
+  }
+  .waTop p {
+    font-size: 0.8rem;
+  }
+  .agentCard {
+    padding: 1.25rem 0.85rem;
+    border-radius: 16px;
+  }
+  .agentCard h3 {
+    font-size: 1.15rem;
+  }
+  .agentLocation {
+    font-size: 0.8rem;
+  }
+  .metaItem {
+    font-size: 0.8rem;
+  }
+  .supportNote {
+    padding: 1rem 0.85rem;
+  }
+  .supportNote h4 {
+    font-size: 0.85rem;
+  }
+  .supportNote p {
+    font-size: 0.78rem;
   }
 }

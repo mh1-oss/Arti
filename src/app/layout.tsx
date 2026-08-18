@@ -1,7 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arti-6go.pages.dev'),
@@ -44,9 +50,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body style={{ paddingTop: 'var(--nav-height)' }} suppressHydrationWarning>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <div style={{ overflowX: 'hidden', width: '100%', position: 'relative' }}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
