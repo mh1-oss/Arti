@@ -11,17 +11,19 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arti-software.com'),
-  title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
-  description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية. برمجيات مستقبلية لنمو عملك.",
+  title: "آرتي للخدمات البرمجية | Arti Software",
+  description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية. Arti Software provides modern ERP systems, custom web & app development, and cloud solutions.",
   keywords: [
     "ERP", "تطوير برمجيات", "تطوير مواقع", "تطبيقات جوال", "حلول سحابية", 
     "آرتي للبرمجيات", "شركات برمجة", "برمجة تطبيقات", "تصميم مواقع", 
-    "انظمة محاسبية", "نقاط بيع", "برمجة خاصة", "حلول تقنية", "POS"
+    "انظمة محاسبية", "نقاط بيع", "برمجة خاصة", "حلول تقنية", "POS",
+    "Arti", "Arti Software", "Software Company", "Web Development", 
+    "App Development", "ERP Systems", "Software Solutions", "Tech Agency Iraq"
   ],
   authors: [{ name: "آرتي للخدمات البرمجية" }],
   openGraph: {
-    title: "آرتي للخدمات البرمجية | حلول ذكية للأعمال الحديثة",
-    description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية.",
+    title: "آرتي للخدمات البرمجية | Arti Software",
+    description: "تقدم آرتي للخدمات البرمجية أنظمة ERP متميزة، وتطوير مواقع مخصصة، وتطبيقات جوال، وحلول سحابية. Arti Software provides modern ERP systems, custom web & app development, and cloud solutions.",
     url: "https://arti-software.com",
     siteName: "آرتي للخدمات البرمجية",
     locale: "ar_IQ",
