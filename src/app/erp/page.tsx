@@ -274,10 +274,14 @@ const ERPPage = () => {
                   <tr key={idx}>
                     <td className={styles.featureCol}>{row.feature}</td>
                     <td className={styles.artiCol}>
-                      <CheckCircle2 size={18} className={styles.checkIcon} /> {row.arti}
+                      <div className={styles.cellContent}>
+                        <CheckCircle2 size={18} className={styles.checkIcon} /> {row.arti}
+                      </div>
                     </td>
                     <td className={styles.tradCol}>
-                      <XCircle size={18} className={styles.xIcon} /> {row.traditional}
+                      <div className={styles.cellContent}>
+                        <XCircle size={18} className={styles.xIcon} /> {row.traditional}
+                      </div>
                     </td>
                   </tr>
                 ))}

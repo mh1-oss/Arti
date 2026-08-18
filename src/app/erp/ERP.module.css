@@ -361,13 +361,13 @@
   background: rgba(99, 102, 241, 0.03);
   color: #0f172a;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .tradCol {
   color: #64748b;
+}
+
+.cellContent {
   display: flex;
   align-items: center;
   gap: 0.5rem;
