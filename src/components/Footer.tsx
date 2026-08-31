@@ -45,10 +45,7 @@ const Footer = () => {
         <div className={styles.contact}>
           <h3>المقر والتواصل</h3>
           <ul>
-            <li>
-              <MapPin size={18} className="text-gradient" />
-              <span>بغداد • شارع الصناعة (مكتب الأسطورة)</span>
-            </li>
+
             <li>
               <Phone size={18} className="text-gradient" />
               <a href="tel:+9647801814088" dir="ltr">+964 780 181 4088</a>

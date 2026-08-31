@@ -497,56 +497,7 @@ const Home = () => {
       </section>
 
       {/* Local Physical Presence & Agent Spotlight */}
-      <section className={`${styles.agentSpotlight} section`}>
-        <div className="container">
-          <div className={styles.agentBox}>
-            <div className={styles.agentTextContent}>
-              <div className={styles.agentBadge}>
-                <MapPin size={16} /> مقر ووكيل معتمد على أرض الواقع
-              </div>
-              <h2>تفضل بزيارتنا وتجربة النظام <span className="text-gradient">مباشرةً</span></h2>
-              <p>
-                نحن نؤمن بأن الثقة تبنى بالشفافية والوجود الحقيقي. يمكنك زيارة وكيلنا المعتمد في قلب بغداد لتجربة نظام آرتي ERP على أجهزة العرض والتعرف على كافة الحلول.
-              </p>
-              <div className={styles.agentDetails}>
-                <div className={styles.agentDetailItem}>
-                  <strong>الوكيل المعتمد:</strong> مكتب الأسطورة
-                </div>
-                <div className={styles.agentDetailItem}>
-                  <strong>العنوان:</strong> شارع الصناعة - مجمع النعمان التجاري - بغداد
-                </div>
-              </div>
-              <div className={styles.agentActions}>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=مكتب+الأسطورة+مجمع+النعمان+شارع+الصناعة+بغداد" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={styles.mapBtn}
-                >
-                  <ExternalLink size={16} /> الموقع على خرائط غوغل
-                </a>
-                <a 
-                  href="https://wa.me/9647801814088" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={styles.agentWaBtn}
-                >
-                  <MessageCircle size={16} /> تواصل لتحديد موعد زيارة
-                </a>
-              </div>
-            </div>
 
-            <div className={styles.agentCardSide}>
-              <div className={styles.guaranteeCard}>
-                <ShieldCheck size={42} className={styles.shieldIcon} />
-                <h3>ضمان الاستقرار والدعم الفني</h3>
-                <p>عقد رسمي ودعم فني متواصل مع إمكانية التعديل والتخصيص بما يوافق طبيعة تجارتك ونشاطك.</p>
-                <div className={styles.guaranteePill}>استجابة فورية 24/7</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Final Call to Action */}
       <section className={styles.footerCta}>

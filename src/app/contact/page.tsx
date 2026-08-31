@@ -69,15 +69,7 @@ const ContactPage = () => {
     }
   };
 
-  const agents = [
-    {
-      name: "مكتب الأسطورة (الوكيل المعتمد)",
-      location: "شارع الصناعة - مجمع النعمان التجاري - بغداد",
-      hours: "السبت - الخميس: 9:00 صباحاً - 6:00 مساءً",
-      mapLink: "https://www.google.com/maps/search/?api=1&query=مكتب+الأسطورة+مجمع+النعمان+شارع+الصناعة+بغداد",
-      phone: "+964 780 181 4088"
-    }
-  ];
+
 
   return (
     <div className={styles.contactPage}>
@@ -245,36 +237,7 @@ const ContactPage = () => {
                 </a>
               </div>
 
-              {/* Physical Agent Card */}
-              <div className={styles.agentCard}>
-                <div className={styles.agentBadge}>
-                  <MapPin size={16} /> المقر والوكيل المعتمد
-                </div>
-                <h3>{agents[0].name}</h3>
-                <p className={styles.agentLocation}>{agents[0].location}</p>
-                
-                <div className={styles.agentMeta}>
-                  <div className={styles.metaItem}>
-                    <Clock size={16} className={styles.metaIcon} />
-                    <span>{agents[0].hours}</span>
-                  </div>
-                  <div className={styles.metaItem}>
-                    <Phone size={16} className={styles.metaIcon} />
-                    <span dir="ltr">{agents[0].phone}</span>
-                  </div>
-                </div>
 
-                <div className={styles.agentCardActions}>
-                  <a 
-                    href={agents[0].mapLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.mapBtn}
-                  >
-                    <ExternalLink size={16} /> فتح في خرائط غوغل
-                  </a>
-                </div>
-              </div>
 
               {/* Support Note */}
               <div className={styles.supportNote}>
